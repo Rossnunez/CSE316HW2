@@ -41,17 +41,24 @@ export default class SongCard extends React.Component {
         event.preventDefault();
         let target = event.target;
         let targetId = target.id;
-        targetId = targetId.substring(target.id.indexOf("-") + 1);
-        let sourceId = event.dataTransfer.getData("song");
-        sourceId = sourceId.substring(sourceId.indexOf("-") + 1);
-        
-        this.setState(prevState => ({
-            isDragging: false,
-            draggedTo: false
-        }));
+        if (targetId !== null && targetId !== "") {
+            targetId = targetId.substring(target.id.indexOf("-") + 1);
+            let sourceId = event.dataTransfer.getData("song");
+            sourceId = sourceId.substring(sourceId.indexOf("-") + 1);
 
-        // ASK THE MODEL TO MOVE THE DATA
-        this.props.moveCallback(sourceId, targetId);
+            this.setState(prevState => ({
+                isDragging: false,
+                draggedTo: false
+            }));
+
+            // ASK THE MODEL TO MOVE THE DATA
+            this.props.moveCallback(sourceId, targetId);
+        }
+    }
+
+    handleDoubleClick = (event) => {
+        event.stopPropagation();
+        this.props.editSongCallback(this.props.song);
     }
 
     getItemNum = () => {
@@ -61,6 +68,8 @@ export default class SongCard extends React.Component {
     render() {
         const { song } = this.props;
         let num = this.getItemNum();
+        let indexOfSong = num + "." //getting the index number of the song to show on the UI
+        let youtubeLink = "https://www.youtube.com/watch?v=" + song.youTubeId; //getting the ytlink to hyperlink for each song in the UI
         console.log("num: " + num);
         let itemClass = "playlister-song";
         if (this.state.draggedTo) {
@@ -75,9 +84,17 @@ export default class SongCard extends React.Component {
                 onDragEnter={this.handleDragEnter}
                 onDragLeave={this.handleDragLeave}
                 onDrop={this.handleDrop}
+                onDoubleClick={this.handleDoubleClick}
                 draggable="true"
             >
-                {song.title} by {song.artist}
+                {indexOfSong} <span><a id={'song-' + num} href={youtubeLink}>{song.title} by {song.artist}</a></span>
+
+                <input
+                    id={'song-' + num}
+                    type='button'
+                    value='X'
+                    style={{ marginLeft: 'auto' }}
+                ></input>
             </div>
         )
     }
