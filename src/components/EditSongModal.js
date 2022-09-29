@@ -7,8 +7,6 @@ export default class EditSongModal extends Component {
             title: this.props.title,
             artist: this.props.artist,
             ytID: this.props.youTubeId
-            // songKP: null,
-            // editable: true
         };
     }
 
@@ -28,37 +26,8 @@ export default class EditSongModal extends Component {
         });
     }
 
-    // handleEdit = () => {
-    //     let oldSong = this.props.song
-    //     let newTitle = this.state.title
-    //     let newArtist = this.state.artist
-    //     let newYTID = this.state.ytID
-    //     this.props.editSongCallback(oldSong, newTitle, newArtist, newYTID)
-    // }
-
-    // setEditable = () => {
-    //     this.setState({
-    //         editable: true
-    //     })
-    // }
-
-    // setInputs = (songKeyPair) => {
-    //     this.setState({
-    //         title: songKeyPair.title,
-    //         artist: songKeyPair.artist,
-    //         ytID: songKeyPair.youTubeId,
-    //         editable: false,
-    //         songKP: songKeyPair
-    //     })
-    // }
-
     render() {
         const { songKeyPair, editSongCallback, hideSongModalCallback } = this.props;
-        // if (songKeyPair && this.state.editable) {
-        //     this.setInputs(songKeyPair)
-        // } else if (songKeyPair && this.state.songKP && (songKeyPair !== this.state.songKP)) {
-        //     this.setEditable()
-        // }
         let title = ""
         let artist = ""
         let id = ""
@@ -90,7 +59,7 @@ export default class EditSongModal extends Component {
                                 id="Title"
                                 name="Title"
                                 defaultValue={title}
-                                onChange={e => this.changeTitle(e.target.value)}
+                                //onChange={e => this.changeTitle(e.target.value)}
                             />
                             <br />
                             <label
