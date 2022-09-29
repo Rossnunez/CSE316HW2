@@ -156,10 +156,10 @@ class App extends React.Component {
         song.youTubeId = document.getElementById("Id").value
     }
 
-    // addSong = () => {
-    //     this.state.currentList.songs.push({ "title": "Untitled", "artist": "Unknown", "youTubeId": "dQw4w9WgXcQ" });
-    //     this.setStateWithUpdatedList(this.state.currentList)
-    // }
+    addSong = () => {
+        this.state.currentList.songs.push({ "title": "Untitled", "artist": "Unknown", "youTubeId": "dQw4w9WgXcQ" });
+        this.setStateWithUpdatedList(this.state.currentList)
+    }
 
     editMarkedSong = () => {
         //console.log(this.state.songKeyPairMarkedForEdit)
