@@ -418,13 +418,24 @@ class App extends React.Component {
         //this.forceUpdate();
     }
 
+    handleKeyDown = (event) => {
+        let canUndo = this.tps.hasTransactionToUndo();
+        let canRedo = this.tps.hasTransactionToRedo();
+        if (event.key === "z" && (event.ctrlKey) && canUndo) {
+            this.undo()
+        } else if (event.key === "y" && (event.ctrlKey) && canRedo) {
+            this.redo()
+        }
+    }
+
     render() {
         let canAddSong = this.state.currentList !== null;
         let canUndo = this.tps.hasTransactionToUndo();
         let canRedo = this.tps.hasTransactionToRedo();
         let canClose = this.state.currentList !== null;
+
         return (
-            <div id="root">
+            <div id="root" onKeyDown={this.handleKeyDown} tabIndex="0">
                 <Banner />
                 <SidebarHeading
                     createNewListCallback={this.createNewList}
