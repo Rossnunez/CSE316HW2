@@ -173,16 +173,8 @@ class App extends React.Component {
         this.setStateWithUpdatedList(this.state.currentList)
     }
 
-    addSong = () => {
-        this.state.currentList.songs.push({ "title": "Untitled", "artist": "Unknown", "youTubeId": "dQw4w9WgXcQ" });
-        this.setStateWithUpdatedList(this.state.currentList)
-    }
-    // editMarkedSong = () => {
-    //     //console.log(this.state.songKeyPairMarkedForEdit)
-    //     this.editSong(this.state.songKeyPairMarkedForEdit);
-    //     this.setStateWithUpdatedList(this.state.currentList);
-    //     this.hideEditSongModal();
-    // }
+
+
     // THIS FUNCTION SPECIFICALLY DELETES THE CURRENT LIST
     deleteCurrentList = () => {
         if (this.state.currentList) {
