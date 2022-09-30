@@ -158,6 +158,11 @@ body {
   cursor: not-allowed;
 }
 
+.toolbar-button-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
 .playlister-song,
 .playlister-song-dragged-to {
   display: flex;
