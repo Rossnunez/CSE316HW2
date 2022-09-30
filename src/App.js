@@ -152,6 +152,11 @@ class App extends React.Component {
         this.hideDeleteSongModal()
     }
 
+    addSong = () => {
+        this.state.currentList.songs.push({ "title": "Untitled", "artist": "Unknown", "youTubeId": "dQw4w9WgXcQ" });
+        this.setStateWithUpdatedList(this.state.currentList)
+    }
+
     deleteSong = (index) => {
         let actualIndex = (index)
         this.state.currentList.songs.splice(actualIndex, 1)
@@ -389,12 +394,6 @@ class App extends React.Component {
         this.setModalState()
     }
 
-    // showEditSongModal = () => {
-    //     let modal = document.getElementById("edit-song-modal");
-    //     modal.classList.add("is-visible");
-    //     this.setModalState()
-    // }
-
     // THIS FUNCTION IS FOR HIDING THE MODAL
     hideDeleteListModal = () => {
         let modal = document.getElementById("delete-list-modal");
@@ -413,6 +412,8 @@ class App extends React.Component {
         modal.classList.remove("is-visible");
         this.setModalState()
     }
+
+
 
     setModalState = () => {
         if (this.state.modalOpen) {
